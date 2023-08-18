@@ -1,0 +1,124 @@
+//task 1(масиви та об'єкти)
+//task 1.1
+a=[1,'hello',2,true,'bye','www',3,false,'nine',true]
+console.log(a[0])
+console.log(a[1])
+console.log(a[2])
+console.log(a[3])
+console.log(a[4])
+console.log(a[5])
+console.log(a[6])
+console.log(a[7])
+console.log(a[8])
+console.log(a[9])
+//task 1.2
+book1={
+    title:'Harry Potter',
+    pageCoun:250,
+    genre:'fantacy',
+}
+book2={
+    title:'SecondBook',
+    pageCoun:310,
+    genre:'detective',
+}
+book3={
+    title:'ThirdyBook',
+    pageCoun:500,
+    genre:'romance',
+}
+booklist=[book1,book2,book3]
+//task 1.3
+newBook1={
+    title:'MainBook',
+    pageCoun:250,
+    genre:'fantacy',
+    authors:
+        {
+            age:100,
+            name:'Vasya'
+        }
+}
+newBook2={
+    title:'SecontBook',
+    pageCoun:310,
+    genre:'detective',
+    authors:
+        {
+            age:52,
+            name:'Olya'
+        }
+}
+newBook3={
+    title:'ThirdyBook',
+    pageCoun:500,
+    genre:'romance',
+    authors:
+        {
+            age:30,
+            name:'Katya'
+        }
+}
+newBookList=[newBook1,newBook2,newBook3]
+//task 1.3
+user1={
+    name:'Vasya',
+    username:'VS',
+    password:'1111111',
+}
+user2={
+    name:'Petya',
+    username:'PT',
+    password:'123456sdsdfd',
+}
+user3={
+    name:'Olya',
+    username:'OL',
+    password:'10928374djskdj',
+}
+user4={
+    name:'Katya',
+    username:'KT',
+    password:'1524367wasq',
+}
+user5={
+    name:'Maria',
+    username:'MR',
+    password:'wasq12345',
+}
+user6={
+    name:'Victor',
+    username:'VT',
+    password:1234232,
+}
+user7={
+    name:'Oleg',
+    username:'OLG',
+    password:'zxcvb12',
+}
+user8={
+    name:'Andriy',
+    username:'AN',
+    password:'ANDR12345',
+}
+user9={
+    name:'Bohdan',
+    username:'BH',
+    password:'lkldsjfkjs11111',
+}
+user10={
+    name:'Dima',
+    username:'DM',
+    password:'kdsjakafkdhs1112',
+}
+users=[user1,user2,user3,user4,user5,user6,user7,user8,user9,user10]
+console.log(users[0].password)
+console.log(users[1].password)
+console.log(users[2].password)
+console.log(users[3].password)
+console.log(users[4].password)
+console.log(users[5].password)
+console.log(users[6].password)
+console.log(users[7].password)
+console.log(users[8].password)
+console.log(users[9].password)

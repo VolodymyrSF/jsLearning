@@ -47,3 +47,5 @@ if (!!!nameLast){
     nameFirst= prompt('enter your last name');
 }
 console.log(nameLast)
+let age=+prompt('enter your age')
+console.log(typeof age,age)
