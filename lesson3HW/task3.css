@@ -1,0 +1,10 @@
+
+.product-card{
+    height: 30vh;
+    width: 100vw;
+}
+
+.product-card>img{
+    height: 85%;
+    width: 15%;
+}

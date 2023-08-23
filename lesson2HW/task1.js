@@ -34,7 +34,7 @@ newBook1={
     pageCoun:250,
     genre:'fantacy',
     authors:
-        {
+        { 
             age:100,
             name:'Vasya'
         }
