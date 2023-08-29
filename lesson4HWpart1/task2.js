@@ -135,21 +135,34 @@ console.log(InSwap)
 
 //- Написати функцію обміну валюти exchange(sumUAH,currencyValues,exchangeCurrency)
 // Приклад exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD') // => 250
-function exchange(sumUAH,currencyValuesUSD,currencyValuesEUR,exchangeCurrency) {
-    document.write(`Ваша сума для обміну:${sumUAH},Курс долара:${currencyValuesUSD},Курс євро:${currencyValuesEUR},Валюта для обміну:${exchangeCurrency}`)
-    let exchangeArray=Array.from(arguments)
-    let exchResultUSD=sumUAH/currencyValuesUSD
-    let exchResultEUR=sumUAH/currencyValuesEUR
-        switch (exchangeCurrency) {
-            case 'USD':
-            return exchResultUSD
-
-            case 'EUR':
-                return exchResultEUR
-        }
-
-}
-
-let ex=exchange(10000,40,42,'EUR')
-document.write(` Результат обміну:${ex}`)
-
+// function exchange(sumUAH,currencyValuesUSD,currencyValuesEUR,exchangeCurrency) {
+//     document.write(`Ваша сума для обміну:${sumUAH},Курс долара:${currencyValuesUSD},Курс євро:${currencyValuesEUR},Валюта для обміну:${exchangeCurrency}`)
+//     let exchangeArray=Array.from(arguments)
+//     let exchResultUSD=sumUAH/currencyValuesUSD
+//     let exchResultEUR=sumUAH/currencyValuesEUR
+//         switch (exchangeCurrency) {
+//             case 'USD':
+//             return exchResultUSD
+//
+//             case 'EUR':
+//                 return exchResultEUR
+//         }
+//
+// }
+//
+// let ex=exchange(10000,40,42,'EUR')
+// document.write(` Результат обміну:${ex}`)
+let exchangeValuta=[
+    {name:'USD', value:40},
+    {name:'EUR', value:50},
+    {name:'DEU', value:25}
+]
+function exchange(sumUAH,currencyValue,exchangeCurrency) {
+    for (const valuta of exchangeValuta) {
+        if (valuta.name===exchangeCurrency)
+            return `${sumUAH/valuta.value}`
+    }
+    return `Wrong exchange name`
+ }
+ let resultExchange=exchange(10000,exchangeValuta,'EUR')
+document.write(` Результат обміну:${resultExchange}` )
