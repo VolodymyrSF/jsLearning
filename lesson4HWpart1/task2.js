@@ -74,20 +74,11 @@ function listUsers(array) {
     document.write(`<ul>`)
     document.write(`<div>`)
     for (const user of users) {
-        document.write(`<li>user_id: ${user.id}</li>`)
+        document.write(`<li>user_id: ${user.id},<br>user_name: ${user.name},<br>user_age: ${user.age}</li>`)
+
     }
     document.write(`</div>`)
-    document.write(`<div>`)
-    for (const user of users) {
-        document.write(`<li>user_name: ${user.name}</li>`)
-    }
-    document.write(`</div>`)
-    document.write(`<div>`)
-    for (const user of users) {
-        document.write(`<li>user_age: ${user.age}</li>`)
-    }
-    document.write(`</div>`)
-    document.write(`</ul>`)
+
 }
 listUsers(users)
 
