@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--*** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.-->
+<!--При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.-->
+<!--(Додатковачастина для завдання)-->
+<form name="forma1">
+    <input type="number" name="rows" placeholder="number of rows">
+    <input type="number" name="pantry" placeholder="number of pantry">
+    <input type="text" name="pantryText" placeholder="text in pantry">
+    <input type="button" name="create" value="create">
+</form>
+<script>
+    let forma=document.forms.forma1
+    forma.create.addEventListener("click", function (ev) {
+        for (b=0;b<forma.rows.value;b++){
+            let rows=document.createElement('div')
+            for (i=0;i<forma.pantry.value;i++){
+                let pantry=document.createElement('div')
+                let text=document.createElement('h2')
+                text.innerText=forma.pantryText.value
+                pantry.appendChild(text)
+                rows.appendChild(pantry)
+                document.body.appendChild(rows)
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

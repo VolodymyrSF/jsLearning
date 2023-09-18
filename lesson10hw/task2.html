@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--є сторінка, на якій є блок, я кому знаходиьтся цифра. написати код, який при кожному перезавантажені сторінки буде додавати до неї +1-->
+<div id="numberDiv">0</div>
+<script>
+    let numberDiv=document.getElementById('numberDiv')
+    let currentValue=localStorage.getItem('currentNumber')
+
+    if (currentValue!==null){
+        currentValue=parseInt(currentValue)
+    }else {
+        currentValue=0
+    }
+    ++currentValue
+
+    numberDiv.innerText=currentValue
+
+    localStorage.setItem('currentNumber',currentValue.toString())
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- - створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача-->
+<form name="confirmAge">
+    <input type="number" name="age" placeholder="age">
+    <input type="button" name="confirm" value="confirm">
+</form>
+<script>
+    let forma=document.forms.confirmAge
+    forma.confirm.addEventListener("click", function (){
+        if (forma.age.value<18){
+            alert('your age <18 go to watch multiki')
+        }
+        else if (forma.age.value>18) {
+            alert('confirm,your age >18 go to watch anything')
+        }
+        else if (forma.age.value=18){
+            alert('confirm,your age=18 go to watch anything')
+        }
+
+    })
+</script>
+</body>
+</html>

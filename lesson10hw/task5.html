@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- - Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".-->
+<div id="text"><h2>I want live</h2></div>
+<button id="button">Kill</button>
+<script>
+    let elementWithText=document.getElementById('text')
+    let elementButton=document.getElementById('button')
+    elementButton.addEventListener("click", function (){
+        elementWithText.style.display='none'
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let sessions=localStorage.getItem('date')
+    let session=JSON.parse(sessions)
+    let div=document.createElement('div')
+    let ol=document.createElement('ol')
+    for (let sessionElement of session) {
+        let li=document.createElement('li')
+        li.innerText=`Сесія відбулась ${sessionElement}`
+        ol.appendChild(li)
+    }
+    div.appendChild(ol)
+    document.body.appendChild(div)
+    console.log( session)
+</script>
+</body>
+</html>

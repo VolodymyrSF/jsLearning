@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--*** (подібне було вище, але...будьте уважні в другій частині) створити сторінку з довільним блоком, в середині якого є значення "100грн"-->
+<!--при перезавантаженні сторінки до значаення додається по 10грн, але !!!-->
+<!--зміна ціни відбувається тільки на перезавантаження, які відбулись пізніше ніж 10 секунд після попереднього.-->
+<!--При перезавантаженні, яке відбулось раніше ніж минуло 10 секунд - нічого не відбувається-->
+<div id="uahDiv">100</div>
+
+<script>
+    let startTime=performance.now()
+    localStorage.setItem('startTime',startTime.toString())
+    let uahDiv=document.getElementById('uahDiv')
+    let currentValue=localStorage.getItem('currentValue')
+    window.addEventListener("beforeunload", function (){
+        let endTime=performance.now()
+        localStorage.setItem('endTime',endTime.toString())
+    })
+    let startTimeNumb=parseInt(localStorage.getItem('startTime'))
+    let endTimeNumb=parseInt(localStorage.getItem('endTime'))
+    let timeOUT=endTimeNumb-startTimeNumb
+    timeOUTinSecond=timeOUT/1000
+
+
+    if (currentValue!==null){
+        currentValue=parseInt(currentValue)
+    }else {
+        currentValue=100
+    }
+
+    console.log(`час після останнього перезавантаження ${timeOUTinSecond}`)
+    if (timeOUTinSecond>10){
+        currentValue=currentValue+10
+    } else{
+        uahDiv.innerText=currentValue
+    }
+    uahDiv.innerText=currentValue
+    localStorage.setItem('currentValue',currentValue.toString())
+</script>
+</body>
+</html>
