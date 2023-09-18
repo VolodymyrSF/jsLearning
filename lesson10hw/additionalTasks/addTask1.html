@@ -19,8 +19,12 @@
     forma.create.addEventListener("click", function (ev) {
         for (b=0;b<forma.rows.value;b++){
             let rows=document.createElement('div')
+            rows.style.display='flex'
+            rows.style.flexDirection='rows'
             for (i=0;i<forma.pantry.value;i++){
                 let pantry=document.createElement('div')
+                pantry.style.border= 'solid 1px black'
+
                 let text=document.createElement('h2')
                 text.innerText=forma.pantryText.value
                 pantry.appendChild(text)
