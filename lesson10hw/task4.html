@@ -10,10 +10,173 @@
 <!--При натисканні next виводяться наступні 10 об'єктів-->
 <!--При натисканні prev виводяться попередні 10 об'єктів-->
 <form name="buttons">
-  <input type="button" name="prev" value="prev">
-  <input type="button" name="next" value="next">
+  <input type="button"  id="prev" value="prev">
+  <input type="button" id="next" value="next">
 </form>
 <script>
+    let userArr=[{id: 1, name: 'Bob', surname: 'Smith'},
+    {id: 2, name: 'Alice', surname: 'Taylor'},
+    {id: 3, name: 'Olivia', surname: 'Clark'},
+    {id: 4, name: 'Sophia', surname: 'Davis'},
+    {id: 5, name: 'Bob', surname: 'Taylor'},
+    {id: 6, name: 'Bob', surname: 'Brown'},
+    {id: 7, name: 'Sophia', surname: 'Wilson'},
+    {id: 8, name: 'Michael', surname: 'Johnson'},
+    {id: 9, name: 'Eva', surname: 'Clark'},
+    {id: 10, name: 'Alina', surname: 'Johnson'},
+    {id: 11, name: 'Sophia', surname: 'Taylor'},
+    {id: 12, name: 'Michael', surname: 'Johnson'},
+    {id: 13, name: 'Alice', surname: 'Clark'},
+    {id: 14, name: 'Sophia', surname: 'Lee'},
+    {id: 15, name: 'David', surname: 'Davis'},
+    {id: 16, name: 'Olivia', surname: 'Lee'},
+    {id: 17, name: 'Sophia', surname: 'Clark'},
+    {id: 18, name: 'David', surname: 'Johnson'},
+    {id: 19, name: 'Olivia', surname: 'Clark'},
+    {id: 20, name: 'Olivia', surname: 'Brown'},
+    {id: 21, name: 'Olivia', surname: 'Taylor'},
+    {id: 22, name: 'Michael', surname: 'Taylor'},
+    {id: 23, name: 'Olivia', surname: 'Lee'},
+    {id: 24, name: 'Bob', surname: 'Clark'},
+    {id: 25, name: 'Sophia', surname: 'Johnson'},
+    {id: 26, name: 'Sophia', surname: 'Brown'},
+    {id: 27, name: 'John', surname: 'Taylor'},
+    {id: 28, name: 'Alice', surname: 'Wilson'},
+    {id: 29, name: 'Alice', surname: 'Lee'},
+    {id: 30, name: 'David', surname: 'Taylor'},
+    {id: 31, name: 'John', surname: 'Clark'},
+    {id: 32, name: 'Alice', surname: 'Lee'},
+    {id: 33, name: 'David', surname: 'Clark'},
+    {id: 34, name: 'Eva', surname: 'Lee'},
+    {id: 35, name: 'Michael', surname: 'Davis'},
+    {id: 36, name: 'David', surname: 'Wilson'},
+    {id: 37, name: 'Olivia', surname: 'Davis'},
+    {id: 38, name: 'Alice', surname: 'Johnson'},
+    {id: 39, name: 'John', surname: 'Lee'},
+    {id: 40, name: 'Bob', surname: 'Clark'},
+    {id: 41, name: 'Olivia', surname: 'Davis'},
+    {id: 42, name: 'Alice', surname: 'Taylor'},
+    {id: 43, name: 'Sophia', surname: 'Davis'},
+    {id: 44, name: 'John', surname: 'Johnson'},
+    {id: 45, name: 'Olivia', surname: 'Johnson'},
+    {id: 46, name: 'Eva', surname: 'Wilson'},
+    {id: 47, name: 'Bob', surname: 'Brown'},
+    {id: 48, name: 'Bob', surname: 'Clark'},
+    {id: 49, name: 'Michael', surname: 'Smith'},
+    {id: 50, name: 'Alice', surname: 'Davis'},
+    {id: 51, name: 'David', surname: 'Davis'},
+    {id: 52, name: 'Bob', surname: 'Johnson'},
+    {id: 53, name: 'Eva', surname: 'Clark'},
+    {id: 54, name: 'Olivia', surname: 'Brown'},
+    {id: 55, name: 'Olivia', surname: 'Lee'},
+    {id: 56, name: 'Michael', surname: 'Wilson'},
+    {id: 57, name: 'Eva', surname: 'Brown'},
+    {id: 58, name: 'Bob', surname: 'Wilson'},
+    {id: 59, name: 'Sophia', surname: 'Clark'},
+    {id: 60, name: 'Alice', surname: 'Smith'},
+    {id: 61, name: 'Eva', surname: 'Lee'},
+    {id: 62, name: 'Alice', surname: 'Wilson'},
+    {id: 63, name: 'John', surname: 'Brown'},
+    {id: 64, name: 'Michael', surname: 'Clark'},
+    {id: 65, name: 'David', surname: 'Wilson'},
+    {id: 66, name: 'Olivia', surname: 'Lee'},
+    {id: 67, name: 'Sophia', surname: 'Davis'},
+    {id: 68, name: 'David', surname: 'Wilson'},
+    {id: 69, name: 'Alice', surname: 'Smith'},
+    {id: 70, name: 'Olivia', surname: 'Clark'},
+    {id: 71, name: 'David', surname: 'Wilson'},
+    {id: 72, name: 'Bob', surname: 'Lee'},
+    {id: 73, name: 'Olivia', surname: 'Lee'},
+    {id: 74, name: 'Sophia', surname: 'Davis'},
+    {id: 75, name: 'Olivia', surname: 'Clark'},
+    {id: 76, name: 'John', surname: 'Smith'},
+    {id: 77, name: 'Alice', surname: 'Lee'},
+    {id: 78, name: 'Sophia', surname: 'Johnson'},
+    {id: 79, name: 'Bob', surname: 'Lee'},
+    {id: 80, name: 'Sophia', surname: 'Brown'},
+    {id: 81, name: 'Sophia', surname: 'Johnson'},
+    {id: 82, name: 'Sophia', surname: 'Davis'},
+    {id: 83, name: 'Alice', surname: 'Johnson'},
+    {id: 84, name: 'Alice', surname: 'Lee'},
+    {id: 85, name: 'David', surname: 'Davis'},
+    {id: 86, name: 'Eva', surname: 'Wilson'},
+    {id: 87, name: 'Bob', surname: 'Lee'},
+    {id: 88, name: 'Olivia', surname: 'Smith'},
+    {id: 89, name: 'David', surname: 'Johnson'},
+    {id: 90, name: 'John', surname: 'Davis'},
+    {id: 91, name: 'Alice', surname: 'Clark'},
+    {id: 92, name: 'Eva', surname: 'Lee'},
+    {id: 93, name: 'Eva', surname: 'Johnson'},
+    {id: 94, name: 'Olivia', surname: 'Brown'},
+    {id: 95, name: 'Eva', surname: 'Smith'},
+    {id: 96, name: 'Sophia', surname: 'Taylor'},
+    {id: 97, name: 'Eva', surname: 'Wilson'},
+    {id: 98, name: 'Eva', surname: 'Lee'},
+    {id: 99, name: 'David', surname: 'Lee'},
+    {id: 100, name: 'Olivia', surname: 'Lee'}];
+    let mainDiv=document.createElement('div')
+    let div=document.createElement('div')
+    let h2=document.createElement('h2')
+    let prev=document.getElementById('prev')
+    let next=document.getElementById('next')
+document.addEventListener('DOMContentLoaded',function (){
+    localStorage.setItem('userArr',JSON.stringify(userArr))
+    let userArrLS=JSON.parse(localStorage.getItem('userArr'))
+    let startArr=userArrLS.slice(0,10)
+    localStorage.setItem('arrOnPage',JSON.stringify(startArr))
+    h2.innerText=localStorage.getItem('arrOnPage')
+    div.appendChild(h2)
+    mainDiv.appendChild(div)
+    document.body.appendChild(mainDiv)
+    prev.setAttribute('disabled','disabled')
+})
+
+    let forma=document.forms.buttons
+    next.addEventListener("click", function (ev) {
+        ev.preventDefault()
+        let beforeArr=JSON.parse(localStorage.getItem('arrOnPage'))
+        let lastIndexOnPage=beforeArr.length-1
+        let lastElementOnPage=beforeArr[lastIndexOnPage]
+        let userArrFromLS=JSON.parse(localStorage.getItem('userArr'))
+        let nextArr=userArrFromLS.slice(lastElementOnPage.id,lastElementOnPage.id +=10)
+        localStorage.setItem('arrOnPage',JSON.stringify(nextArr))
+        if (lastElementOnPage.id<=userArrFromLS.length) {
+            h2.innerHTML = localStorage.getItem('arrOnPage')
+        }else {
+            let slicedUser=userArr.slice((userArr.length-10),userArr.length)
+            localStorage.setItem('arrOnPage',JSON.stringify(slicedUser))
+            h2.innerHTML=localStorage.getItem('arrOnPage')
+            div.appendChild(h2)
+            mainDiv.appendChild(div)
+            document.body.appendChild(mainDiv)
+        }
+    })
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // document.addEventListener("", function (){
+    //     let arrOnPageId=JSON.parse(localStorage.getItem('arrOnPage'))
+    //     console.log(arrOnPageId[0].id)
+    //     if (arrOnPageId[0].id>1){
+    //         document.getElementById('prev').removeAttribute('disabled')
+    //     }else if (arrOnPageId[0]<1){
+    //         document.getElementById('prev').setAttribute('disabled','disabled')
+    //     }
+    // })
+    prev.addEventListener('click',function (ev) {
+        ev.preventDefault()
+        let beforeArr=JSON.parse(localStorage.getItem('arrOnPage'))
+        let firstIndexOnPage=0
+        let firstElementOnPage=beforeArr[firstIndexOnPage]
+        let userArrFromLS=JSON.parse(localStorage.getItem('userArr'))
+        let idFirstEl=(firstElementOnPage.id-1)
+        let idBeforeFirst=firstElementOnPage.id-11
+        console.log(idBeforeFirst)
+        console.log(idFirstEl)
+        let prevArr=userArrFromLS.slice(idBeforeFirst,idFirstEl)
+        localStorage.setItem('arrOnPage',JSON.stringify(prevArr))
+        if (idFirstEl>idBeforeFirst) {
+            h2.innerHTML = localStorage.getItem('arrOnPage')
+        }
+    })
 </script>
 </body>
 </html>
