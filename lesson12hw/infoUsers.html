@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   let url=new URL(location.href)
+   let userJSON=url.searchParams.get('id')
+   let user=JSON.parse(userJSON)
+
+   let div=document.createElement('div')
+
+   let userId=document.createElement('h2')
+   userId.innerText=`userId:${user.id}`
+
+   let nameOfUser=document.createElement('h2')
+   nameOfUser.innerText=`Name:${user.name}`
+
+   let userame=document.createElement('h2')
+   userame.innerText=`Username:${user.username}`
+
+   let userEmail=document.createElement('h2')
+   userEmail.innerText=`Email:${user.email}`
+
+   let userAddress=document.createElement('ul')
+   let addressName=document.createElement('h2')
+   addressName.innerText='Address:'
+
+   let street=document.createElement('li')
+   street.innerText=`Street:${user.address.street}`
+   let suite=document.createElement('li')
+   suite.innerText=`Suite:${user.address.suite}`
+   let city=document.createElement('li')
+   city.innerText=`City:${user.address.city}`
+   let zipcode=document.createElement('li')
+   zipcode.innerText=`Zipcode:${user.address.zipcode}`
+
+   let geo=document.createElement('ul')
+   let geoName=document.createElement('h2')
+   geoName.innerText='Geo:'
+
+   let geoLat=document.createElement('li')
+   geoLat.innerText=`Lat:${user.address.geo.lat}`
+
+   let lng=document.createElement('li')
+   lng.innerText=`Lng:${user.address.geo.lng}`
+
+   geo.append(geoLat,lng)
+
+   userAddress.append(addressName,street,suite,city,zipcode,geoName,geo)
+
+   let phone=document.createElement('h2')
+   phone.innerText=`Phone:${user.phone}`
+
+   let website=document.createElement('h2')
+   website.innerText=`Website:${user.website}`
+
+   let company=document.createElement('ul')
+   let nameOfListCompany=document.createElement('h2')
+   nameOfListCompany.innerText='Company:'
+   let companyName=document.createElement('li')
+   companyName.innerText=`Name:${user.company.name}`
+
+   let companyCatchPhrase=document.createElement('li')
+   companyCatchPhrase.innerText=`CatchPhrase:${user.company.catchPhrase}`
+
+   let companyBs=document.createElement('li')
+   companyBs.innerText=`bs:${user.company.bs}`
+
+   company.append(nameOfListCompany,companyName,companyCatchPhrase,companyBs)
+
+   div.append(userId,nameOfUser,userame,userAddress,geo,phone,website,company)
+
+   document.body.appendChild(div)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       a{
+           text-decoration: none;
+           color: black;
+       }
+    </style>
+</head>
+<body>
+
+<script>
+    // зробити файл users.html
+    // з ендпоінту http://jsonplaceholder.typicode.com/users отримати всіх користувачів
+    // вивести їх id + name списком та додати посилання з href = user-details.html?id=XXX (замість ХХХ - айді юзера)
+    // при кліку на посилання перехід на відповідну сторінку, на якій буде вся інформація про користувача (всі 15 полів) отримана через додатковий запит (https://jsonplaceholder.typicode.com/users/XXX   ХХХ - айді користувача)
+  let div=document.createElement('div')
+  let ol=document.createElement('ol')
+  fetch('http://jsonplaceholder.typicode.com/users')
+  .then(usersValue =>usersValue.json() )
+  .then(jsonUsers=>{
+    for (let jsonUser of jsonUsers) {
+      let li=document.createElement('li')
+      let a=document.createElement('a')
+      a.innerHTML=`username:${jsonUser.name} <br> userID:${jsonUser.id}`
+      a.href=`infoUsers.html?id=`+JSON.stringify(jsonUser)
+      a.addEventListener('click',function (){
+        location.href='./infoUsers.html?id='+JSON.stringify(jsonUser)
+      })
+      li.appendChild(a)
+      ol.appendChild(li)
+      div.appendChild(ol)
+      document.body.appendChild(div)
+    }
+  })
+
+</script>
+</body>
+</html>
