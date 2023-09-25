@@ -26,10 +26,7 @@
       let li=document.createElement('li')
       let a=document.createElement('a')
       a.innerHTML=`username:${jsonUser.name} <br> userID:${jsonUser.id}`
-      a.href=`infoUsers.html?id=`+JSON.stringify(jsonUser)
-      a.addEventListener('click',function (){
-        location.href='./infoUsers.html?id='+JSON.stringify(jsonUser)
-      })
+      a.href=`infoUsers.html?id=`+jsonUser.id
       li.appendChild(a)
       ol.appendChild(li)
       div.appendChild(ol)
