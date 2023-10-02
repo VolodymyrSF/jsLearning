@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // I             1
+  // V             5
+  // X             10
+  // L             50
+  // C             100
+  // D             500
+  // M             1000
+
+
+  function toInteger(s) {
+    console.log(Object.values(roman))
+    let romanArr=Array.from(s)
+    let roman={
+      'I':1,
+      'V':5,
+      'X':10
+    }
+    let result=null
+    for (let romanArrElement of romanArr) {
+      console.log(romanArrElement.value)
+      result=result+romanArrElement
+      console.log(result)
+    }
+    console.log(romanArr)
+  }
+  toInteger('IVX')
+</script>
+</body>
+</html>

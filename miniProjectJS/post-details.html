@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: repeating-linear-gradient(
+                    to top right, #034320 60px, #24d24a 120px, #012c13 121px);
+            overflow: hidden;
+        }
+        .divWithPost{
+            background: linear-gradient(to bottom, #33cc33 0%, #ffcc00 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45vw;
+            height: 26vh;
+            font-size: 25px;
+        }
+        .commentDiv{
+            border: black 1px solid;
+            border-radius: 20px;
+            font-size: 20px;
+            background: linear-gradient(to bottom, #33cc33 0%, #ffcc00 100%);
+            margin-right: 3px;
+            padding: 5px;
+        }
+        .commentDivName{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            background: linear-gradient(to bottom, #33cc33 0%, #ffcc00 100%);
+
+        }
+        .divWithComments{
+           display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 5px;
+
+
+        }
+    </style>
+</head>
+<body>
+<script>
+let url=new URL(location.href)
+let postId=url.searchParams.get('postId')
+
+fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/`)
+.then(postsArr=>postsArr.json())
+.then(post=>{
+    let div=document.createElement('div')
+    div.className='divWithPost'
+
+    let ul=document.createElement('ul')
+
+    let userId=document.createElement('li')
+    userId.innerHTML=`<b>ID користувача цього поста:</b>${post.userId}`
+
+    let id=document.createElement('li')
+    id.innerHTML=`<b>ID поста:</b>${post.id}`
+
+    let title=document.createElement('li')
+    title.innerHTML=`<b>Назва поста:</b>${post.title}`
+
+    let body=document.createElement('li')
+    body.innerHTML=`<b>Текст поста:</b>${post.body}`
+
+    ul.append(userId,id,title,body)
+
+    div.appendChild(ul)
+
+    document.body.appendChild(div)
+
+    fetch(` https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
+        .then(commentsArr=>commentsArr.json())
+        .then(comments=>{
+
+            let commentDivName=document.createElement('h2')
+            commentDivName.innerText='Коментарі інших користувачів до поточного поста'
+            commentDivName.className='commentDivName'
+            document.body.appendChild(commentDivName)
+
+            let divWithComments=document.createElement('div')
+            divWithComments.className='divWithComments'
+
+            for (let comment of comments) {
+
+                let commentDiv=document.createElement('div')
+                commentDiv.className='commentDiv'
+
+                let ulComment=document.createElement('ul')
+
+                let postId=document.createElement('li')
+                postId.innerHTML=`<b>ID поста:</b>${comment.postId}`
+
+                let idComment=document.createElement('li')
+                idComment.innerHTML=`<b>ID користувача:</b>${comment.id}`
+
+                let nameComment=document.createElement('li')
+                nameComment.innerHTML=`<b>Назва поста:</b>${comment.name}`
+
+                let emailComment=document.createElement('li')
+                emailComment.innerHTML=`<b>Електронна пошта користувача:</b>${comment.email}`
+
+                let bodyComment=document.createElement('li')
+                bodyComment.innerHTML=`<b>Текст поста:</b>${comment.body}`
+
+                ulComment.append(postId,idComment,nameComment,emailComment,bodyComment)
+
+                commentDiv.appendChild(ulComment)
+
+                divWithComments.appendChild(commentDiv)
+                document.body.appendChild(divWithComments)
+            }
+        })
+
+
+})
+</script>
+</body>
+</html>

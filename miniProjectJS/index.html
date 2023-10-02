@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            display: grid;
+           grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 5px;
+            background-image: repeating-linear-gradient(
+                    to top right, #034320 60px, #24d24a 120px, #012c13 121px);
+
+        }
+        .userDiv{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+            border: black 1px solid;
+            border-radius: 20px;
+            font-size: 20px;
+            background: linear-gradient(to bottom, #33cc33 0%, #ffcc00 100%);
+        }
+        .button{
+            width: 50%;
+            height: 5vh;
+            margin-bottom: 10px;
+            border-radius: 30px;
+            font-size: 18px;
+            background-color: #00FF7F;
+        }
+        .button:hover{
+            border: blueviolet 1px solid;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+  // В index.html
+  // 1 отримати масив об'єктів з endpoint`а https://jsonplaceholder.typicode.com/users
+  // 2 Вивести id,name всіх user в index.html. Окремий блок для кожного user.
+  // 3 Додати кожному блоку кнопку/посилання , при кліку на яку відбувається перехід  на сторінку user-details.html, котра має детальну інфорацію про об'єкт на який клікнули
+  fetch('https://jsonplaceholder.typicode.com/users')
+      .then(usersResp=>usersResp.json())
+      .then(users=>{
+          for (let usersValue of users) {
+              let div=document.createElement('div')
+              div.className='userDiv'
+
+              let ul=document.createElement('ul')
+
+              let liName=document.createElement('li')
+              liName.innerHTML=`<b>Name:</b>${usersValue.name}`
+
+              let liId=document.createElement('li')
+              liId.innerHTML=`<b>ID:</b>${usersValue.id}`
+
+              let button=document.createElement('button')
+              button.innerText='Info about this user'
+              button.className='button'
+
+              button.addEventListener('click',function () {
+                  location.href='user-details.html?id='+usersValue.id
+              })
+
+              ul.append(liName,liId)
+              div.append(ul,button)
+              document.body.appendChild(div)
+          }
+      })
+
+  //         На странице post-details.html:
+  // 7 Вивести всю, без виключення, інформацію про об'єкт post на який клікнули .
+  // 8 Нижчє інформаці про пост, вивести всі коментарі поточного поста (ендпоінт  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
+  // Стилизація проєкта -
+  // index.html - всі блоки з user - по 2 в рядок. кнопки/аосилвння розташувати під інформацією про user.
+  //     user-details.html - блок з інфою про user зверху сторінки. Кнопка нижчє, на 90% ширини сторінки, по центру.
+  //     блоки з короткою іфною про post - в ряд по 5 .
+  //     post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.
+  //     Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що це блоки (дати фон. марджини і тд)
+</script>
+</body>
+</html>
